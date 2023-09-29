@@ -71,6 +71,32 @@ namespace dev0200001
             return $"mon nom est {this.GetNom()}, mon prenom est {this.GetPrenom()} et j'ai {this.GetAge()} ans.";
 
         }
+
+        /// <summary>
+        /// Méthode pour obtenir une instance de la classe Personne à partir d'un nom donné.
+        /// </summary>
+        /// <param name="param">Le nom de la personne à rechercher.</param>
+        /// <returns>Retourne une instance de la classe Personne si elle est trouvée, sinon retourne null.</returns>
+        public static Personne GetMe(string param)
+        {
+            // Parcourez chaque instance de Personne dans la collection static CollClass de la classe Personne.
+            foreach (Personne UnePersonne in Personne.CollClass)
+            {
+                // Vérifiez si le nom de l'instance actuelle de Personne correspond au paramètre 'param'.
+                if (UnePersonne.GetNom() == param)
+                {
+                    // Si c'est le cas, affichez une information associée à cette personne (probablement une description ou une biographie).
+                    Console.WriteLine(UnePersonne.GetMaVie());
+
+                    // Retournez l'instance actuelle de Personne.
+                    return UnePersonne;
+                }
+            }
+
+            // Si aucune instance de Personne avec le nom donné n'a été trouvée, retournez null.
+            return null;
+        }
+
         #endregion
 
     }
@@ -83,21 +109,7 @@ namespace dev0200001
           new Personne("riri","fifi");
           new Personne("loulou", "picsou", 12);
 
-          Personne.GetMe("riri");
-
-            //////////////
-
-            foreach (Personne UnePersonne in Personne.CollClass)
-            {
-                if (UnePersonne.GetNom() == "riri")
-                {
-                    Console.WriteLine(UnePersonne.GetMaVie());
-
-                }
-
-            }
-
-            ///////////////
+          Personne P = Personne.GetMe("riri");
 
 
 
